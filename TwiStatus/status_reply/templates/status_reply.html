@@ -71,7 +71,7 @@ setInterval(ajax_call, interval);
          <td width="160">{{reply_dict.user.name}}</td>
          <td  width="160">{{reply_dict.user.screen_name}}</td>
          <td  width="488">{{reply_dict.text}}</td>
-         <td  width="160"></td>
+         <td  width="160">{{reply_dict.retweet_count}}</td>
          <td  width="160">{{reply_dict.created_at}}</td>
      </tr>
      {% endfor %}
