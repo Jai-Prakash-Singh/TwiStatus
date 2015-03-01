@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+var ajax_call = function() {
+    $.post("/ajax_get_reply/",
+        function(data,status){
+            $("#reply_div").empty();
+            $("#reply_div").html(data)
+            // alert("Data: " + data + "\nStatus: " + status);
+        });
+};
+
+var interval = 1000 * 60 * 2; // where X is your every X minutes
+
+setInterval(ajax_call, interval);
+</script>
+</head>
+<body>
+
+
+
 <form action='' method="POST" id="status_reply">{%csrf_token%}
 
 {% for i in form %}
@@ -11,6 +34,7 @@
 
 
 {% if  main_status %}
+<div id="status_reply_div" style="width:100%;background-color:yellow;">
   <table style="width:100%, background:#80BFFF" cellpadding="0" cellspacing="0" border="0" >
   <tr>
      <td width="160">User name</td>
@@ -27,10 +51,13 @@
     <td width="160">{{main_status.created_at}}</td>
   </tr>
 </table>
+</div>
 
 {% endif %}
 
 {% if reply_status %}
+<div id="reply_div" style="width:100%;background-color:yellow;">
+
      <table style="width:100%; background:#ccc" cellpadding="0" cellspacing="0" border="0" >
      <tr>
      <td width="160">User name</td>
@@ -48,5 +75,10 @@
          <td  width="160">{{reply_dict.created_at}}</td>
      </tr>
      {% endfor %}
+     </table>
+</div>
 
 {% endif %}
+
+</body>
+</html>

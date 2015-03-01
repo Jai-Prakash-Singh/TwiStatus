@@ -1,0 +1,19 @@
+ <table style="width:100%; background:#ccc" cellpadding="0" cellspacing="0" border="0" >
+     <tr>
+     <td width="160">User name</td>
+     <td width="160">Screen name</td>
+     <td width="488">Text</td>
+     <td width="160">Retweet Count</td>
+     <td width="160">Created At</td>
+     </tr>   
+     {% for reply_dict in reply_status %}
+     <tr>
+         <td width="160">{{reply_dict.user.name}}</td>
+         <td  width="160">{{reply_dict.user.screen_name}}</td>
+         <td  width="488">{{reply_dict.text}}</td>
+         <td  width="160"></td>
+         <td  width="160">{{reply_dict.created_at}}</td>
+         heyyyyyy
+     </tr>
+     {% endfor %}
+</table>
