@@ -81,3 +81,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CONSUMER_KEY = 'bsjANsQfkTDfLQqyAPEdQb5tE'
+CONSUMER_SECRET = 'VKGAWEiQXvgqA8kqjG5w7bEVAWTSZd2MjevV2wilsNzBmm76R8'
+ACCESS_TOKEN = '519973818-WwH5f7XfUSlIftoHkLpoj7F8j8AgYnRc9BPCd4cR'
+ACCESSTOKEN_SECRET = 'dpKnEDbMg2Wxhsue1sdJJZkvHQDlsXtxZ50JvHGlcUQij'
+
+import twitter
+
+TWITTER_API = twitter.Api(consumer_key=CONSUMER_KEY,
+                consumer_secret=CONSUMER_SECRET,
+                access_token_key=ACCESS_TOKEN,
+                access_token_secret=ACCESSTOKEN_SECRET)
