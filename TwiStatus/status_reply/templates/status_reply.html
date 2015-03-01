@@ -34,8 +34,8 @@ setInterval(ajax_call, interval);
 
 
 {% if  main_status %}
-<div id="status_reply_div" style="width:100%;background-color:yellow;">
-  <table style="width:100%, background:#80BFFF" cellpadding="0" cellspacing="0" border="0" >
+<div id="status_reply_div" style="width:100%;background-color:LawnGreen;">
+  <table style="width:100%" cellpadding="0" cellspacing="0" border="0" >
   <tr>
      <td width="160">User name</td>
      <td width="160">Screen name</td>
@@ -56,16 +56,16 @@ setInterval(ajax_call, interval);
 {% endif %}
 
 {% if reply_status %}
-<div id="reply_div" style="width:100%;background-color:yellow;">
+<div id="reply_div" style="width:100%;background-color:GreenYellow;">
 
-     <table style="width:100%; background:#ccc" cellpadding="0" cellspacing="0" border="0" >
-     <tr>
+     <table style="width:100%" cellpadding="0" cellspacing="0" border="0" >
+     <!-- <tr>
      <td width="160">User name</td>
      <td width="160">Screen name</td>
      <td width="488">Text</td>
      <td width="160">Retweet Count</td>
      <td width="160">Created At</td>
-     </tr>   
+     </tr>   --> 
      {% for reply_dict in reply_status %}
      <tr>
          <td width="160">{{reply_dict.user.name}}</td>
