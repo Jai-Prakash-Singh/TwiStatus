@@ -20,15 +20,20 @@ def get_status_reply(request):
             #date = 571542404156809216
             request.session["tweet_id"] = data
 
-            main_status = api.GetStatus(id=data) 
-            reply_status_old = api.GetReplies(since_id=data)
-            reply_status = []
+            try:
+                main_status = api.GetStatus(id=data) 
+                reply_status_old = api.GetReplies(since_id=data)
+                reply_status = [] 
+         
 
-            for i in reply_status_old:
-                reply_status.append(i.AsDict())
+                for i in reply_status_old:
+                    reply_status.append(i.AsDict())
 
-            return render_to_response(template_name, {'form':form, "main_status":main_status, "reply_status":reply_status}, ci)
-
+                return render_to_response(template_name, {'form':form, "main_status":main_status, "reply_status":reply_status}, ci)
+            except:
+                msg = "Given post id is not aval on twitter"
+                return render_to_response(template_name, {'form':form, "msg":msg}, ci)
+            
     return render_to_response(template_name, {'form':form}, ci)
 
 
@@ -39,13 +44,19 @@ def ajax_get_reply(request):
     ci = RequestContext(request)
     template_name = "ajax_get_reply.html"
     tweet_id = request.session.get("tweet_id")
-    reply_status_old = api.GetReplies(since_id=tweet_id)
-    reply_status = []
+    try:
+        reply_status_old = api.GetReplies(since_id=tweet_id)
+        reply_status = []
 
-    for i in reply_status_old:
-        reply_status.append(i.AsDict())
+        for i in reply_status_old:
+            reply_status.append(i.AsDict())
 
-        print reply_status
+            print reply_status
 
-    return render_to_response(template_name, {"reply_status":reply_status}, ci)
+        return render_to_response(template_name, {"reply_status":reply_status}, ci)
+
+    except:
+        msg = "Given post id is not aval on twitter"
+        return render_to_response(template_name, {"msg":msg}, ci)
+
     # return HttpResponse(tweet_id)

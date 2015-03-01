@@ -19,6 +19,10 @@ setInterval(ajax_call, interval);
 </head>
 <body>
 
+{% if msg %}
+        <p style="color: red;"> {{msg}}</p>
+{% endif %}
+
 
 
 <form action='' method="POST" id="status_reply">{%csrf_token%}
