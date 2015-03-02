@@ -19,8 +19,8 @@ setInterval(ajax_call, interval);
 </head>
 <body>
 
-{% if msg %}
-        <p style="color: red;"> {{msg}}</p>
+{% if error_list %}
+        <p style="color: red;"> {{error_list.0}}</p>
 {% endif %}
 
 
@@ -37,46 +37,36 @@ setInterval(ajax_call, interval);
 </form>
 
 
-{% if  main_status %}
+{% if  status %}
 <div id="status_reply_div" style="width:100%;background-color:LawnGreen;">
   <table style="width:100%" cellpadding="0" cellspacing="0" border="0" >
   <tr>
-     <td width="160">User name</td>
-     <td width="160">Screen name</td>
+     <td width="160">Fullname</td>
+     <td width="160">User Name</td>
+     <td width="160">At Reply</td>
      <td width="488">Text</td>
-     <td width="160">Retweet Count</td>
-     <td width="160">Created At</td>
   </tr>
   <tr>
-    <td width="160">{{main_status.user.name}}</td>
-    <td width="160">{{main_status.user.screen_name}}</td>
-    <td width="488">{{main_status.text}}</td> 
-    <td width="160">{{main_status.retweet_count}}</td>
-    <td width="160">{{main_status.created_at}}</td>
+    <td width="160">{{status.0}}</td>
+    <td width="160">{{status.1}}</td>
+    <td width="160">{{status.2}}</td> 
+    <td width="488">{{status.3}}</td>
   </tr>
 </table>
 </div>
 
 {% endif %}
 
-{% if reply_status %}
+{% if reply_list %}
 <div id="reply_div" style="width:100%;background-color:GreenYellow;">
 
-     <table style="width:100%" cellpadding="0" cellspacing="0" border="0" >
-     <!-- <tr>
-     <td width="160">User name</td>
-     <td width="160">Screen name</td>
-     <td width="488">Text</td>
-     <td width="160">Retweet Count</td>
-     <td width="160">Created At</td>
-     </tr>   --> 
-     {% for reply_dict in reply_status %}
+     <table style="width:100%" cellpadding="0" cellspacing="0" border="0" >  
+     {% for reply_dict in reply_list %}
      <tr>
-         <td width="160">{{reply_dict.user.name}}</td>
-         <td  width="160">{{reply_dict.user.screen_name}}</td>
-         <td  width="488">{{reply_dict.text}}</td>
-         <td  width="160"></td>
-         <td  width="160">{{reply_dict.created_at}}</td>
+         <td width="160">{{reply_dict.0}}</td>
+         <td  width="160">{{reply_dict.1}}</td>
+         <td  width="160">{{reply_dict.2}}</td>
+         <td  width="488">{{reply_dict.3}}</td>
      </tr>
      {% endfor %}
      </table>
