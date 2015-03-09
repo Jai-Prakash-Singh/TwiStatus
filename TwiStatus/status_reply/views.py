@@ -19,7 +19,7 @@ def my_strip(x):
         x = str(x).strip()
 
     except:
-        x = str(x.encode("ascii", "ignore")).strip()
+        x = str(x.encode("ascii", "ignore").encode('utf-8')).strip()
 
     return x
 
