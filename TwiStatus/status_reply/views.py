@@ -53,23 +53,23 @@ def get_tweet_id_and_give_status(request,  api):
 	
 	fullname = soup_reply.find("strong", 
 	    attrs={"class":"fullname js-action-profile-name show-popup-with-id"}).text
-        print fullname
+        #print fullname
 	
 	user_name  = soup_reply.find("span", 
 	    attrs={"class":"username js-action-profile-name"}).text
 	    
-	print user_name
+	#print user_name
 	at_reply  = soup_reply.find("a", 
 	    attrs={"class":"twitter-atreply pretty-link"}).text
 	    
-	print at_reply
+	#print at_reply
 	at_reply_href  = soup_reply.find("a", 
 	    attrs={"class":"twitter-atreply pretty-link"})["href"]
 	    
-        print at_reply_href
+        #print at_reply_href
 	at_reply_text  = soup_reply.find("p", 
 	    attrs={"class":"js-tweet-text tweet-text"}).text
-	print at_reply_text
+	#print at_reply_text
 	
 	reply_list.append(map(my_strip, [fullname, user_name, at_reply,  at_reply_text ]))
 
