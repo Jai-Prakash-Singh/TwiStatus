@@ -10,6 +10,7 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.encoding import smart_unicode
 import requests
 from bs4 import BeautifulSoup
 import urllib
@@ -22,10 +23,11 @@ from twitter_status.settings import TWITTER_API as api
 
 def my_strip(x):
     try:
-        x = str(x).strip()
+        #x = str(x.encode("ascii", "ignore").encode('utf-8')).strip()
+        x = smart_unicode(x)
 
     except:
-        x = str(x.encode("ascii", "ignore").encode('utf-8')).strip()
+        x = str(x).strip()
 
     return x
 
