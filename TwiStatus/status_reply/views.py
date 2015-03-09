@@ -61,12 +61,18 @@ def get_tweet_id_and_give_status(request,  api, screen_name, tweet_id, html=''):
 	        attrs={"class":"username js-action-profile-name"}).text
 	    
 	    #print user_name
-	    at_reply  = soup_reply.find("a", 
-	        attrs={"class":"twitter-atreply pretty-link"}).text
+            try:
+	        at_reply  = soup_reply.find("a", 
+	            attrs={"class":"twitter-atreply pretty-link"}).text
+            except:
+                at_reply = None
 
 	    #print at_reply
-	    at_reply_href  = soup_reply.find("a", 
-	        attrs={"class":"twitter-atreply pretty-link"})["href"]
+            try:
+	        at_reply_href  = soup_reply.find("a", 
+	            attrs={"class":"twitter-atreply pretty-link"})["href"]
+            except:
+                at_reply_href = "None"
 	    
             #print at_reply_href
             
