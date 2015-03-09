@@ -12,6 +12,17 @@ from forms import InputForm
 from twitter_status.settings import TWITTER_API as api
 
 
+def my_strip(x):
+    try:
+        x = str(x).strip()
+
+    except:
+        x = str(x.encode("ascii", "ignore")).strip()
+
+    return x
+
+
+
 
 def get_tweet_id_and_give_status(request,  api):
     tweet_id = request.session.get("tweet_id")
@@ -50,7 +61,7 @@ def get_tweet_id_and_give_status(request,  api):
 	    attrs={"class":"js-tweet-text tweet-text"}).text
 	print at_reply_text
 	
-	reply_list.append([fullname, user_name, at_reply,  at_reply_text ])
+	reply_list.append(map(my_strip, [fullname, user_name, at_reply,  at_reply_text ]))
 
     return {"reply_list" : reply_list}
 
@@ -83,7 +94,7 @@ def get_status_reply(request):
             at_reply = status.in_reply_to_screen_name 
             text = status.text
  
-            dict_data["status"] = [name, screen_name, at_reply, text]
+            dict_data["status"] = map(my_strip, [name, screen_name, at_reply, text])
 
 	    dict_data.update(get_tweet_id_and_give_status(request,  api))
             return render_to_response(template_name, dict_data, ci)
