@@ -1,6 +1,6 @@
 {% if reply_list %}
 
-     <!-- <table style="width:100%" cellpadding="0" cellspacing="0" border="0" >   -->
+     <table id = "table_reply_div" style="width:100%" cellpadding="0" cellspacing="0" border="0" >  
      {% for reply_dict in reply_list %}
      <tr>
          <td width="160">{{reply_dict.0}}</td>
@@ -9,6 +9,6 @@
          <td  width="160">{{reply_dict.3}}</td>
      </tr>
      {% endfor %}
-     <!-- </table> -->
+     </table>
 
 {% endif %}

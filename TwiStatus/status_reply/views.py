@@ -63,7 +63,7 @@ def get_tweet_id_and_give_status(request,  api, screen_name, tweet_id, html=''):
 	    #print user_name
 	    at_reply  = soup_reply.find("a", 
 	        attrs={"class":"twitter-atreply pretty-link"}).text
-	    
+
 	    #print at_reply
 	    at_reply_href  = soup_reply.find("a", 
 	        attrs={"class":"twitter-atreply pretty-link"})["href"]
@@ -84,7 +84,7 @@ def get_tweet_id_and_give_status(request,  api, screen_name, tweet_id, html=''):
                 at_reply_text = ''
 
 	    #print at_reply_text
-
+	    
 	    max_id = soup_reply.find("a", attrs={"class":"details with-icn js-details"})["href"]
             max_id = max_id[max_id.rfind("/")+1:]
 
@@ -128,12 +128,12 @@ def get_status_reply(request):
                 screen_name = status.in_reply_to_screen_name
                 request.session["tweet_id"] = status.in_reply_to_status_id
                 request.session["screen_name"] = screen_name
+                link = "https://twitter.com/%s/status/%s" %(screen_name, status.in_reply_to_status_id)
             else:
 	        screen_name = status._json["user"]["screen_name"]
                 request.session["tweet_id"] = tweet_id
 	        request.session["screen_name"] = screen_name
-
-            link = "https://twitter.com/%s/status/%s" %(screen_name, tweet_id)
+		link = "https://twitter.com/%s/status/%s" %(screen_name, tweet_id)
             
             name = status._json["user"]["name"]
             screen_name = status._json["user"]["screen_name"]
@@ -142,7 +142,6 @@ def get_status_reply(request):
  
             dict_data["status"] = map(my_strip, [name, screen_name, at_reply, text])
             
-            link = "https://twitter.com/%s/status/%s" %(screen_name, tweet_id)
             r = request_twitter_api.get(link)
             html = r.text
             

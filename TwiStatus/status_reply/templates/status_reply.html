@@ -8,7 +8,7 @@ var ajax_call = function() {
     $.post("/ajax_get_reply/",
         function(data,status){
             // $("#reply_div").empty();
-            $("#table_reply_div").append(data)
+            $("#reply_div").append(data)
             // alert("Data: " + data + "\nStatus: " + status);
         });
 };
