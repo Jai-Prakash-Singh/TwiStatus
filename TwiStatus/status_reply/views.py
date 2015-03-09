@@ -55,20 +55,20 @@ def get_tweet_id_and_give_status(request,  api, screen_name, tweet_id, html=''):
 	
 	    fullname = soup_reply.find("strong", 
 	        attrs={"class":"fullname js-action-profile-name show-popup-with-id"}).text
-            print fullname
+            #print fullname
 	
 	    user_name  = soup_reply.find("span", 
 	        attrs={"class":"username js-action-profile-name"}).text
 	    
-	    print user_name
+	    #print user_name
 	    at_reply  = soup_reply.find("a", 
 	        attrs={"class":"twitter-atreply pretty-link"}).text
 	    
-	    print at_reply
+	    #print at_reply
 	    at_reply_href  = soup_reply.find("a", 
 	        attrs={"class":"twitter-atreply pretty-link"})["href"]
 	    
-            print at_reply_href
+            #print at_reply_href
             
 	    at_reply_text  = soup_reply.find("p", 
 	        attrs={"class":"js-tweet-text tweet-text"})
@@ -83,7 +83,7 @@ def get_tweet_id_and_give_status(request,  api, screen_name, tweet_id, html=''):
             else: 
                 at_reply_text = ''
 
-	    print at_reply_text
+	    #print at_reply_text
 
 	    max_id = soup_reply.find("a", attrs={"class":"details with-icn js-details"})["href"]
             max_id = max_id[max_id.rfind("/")+1:]
@@ -103,7 +103,7 @@ def get_tweet_id_and_give_status(request,  api, screen_name, tweet_id, html=''):
 
         html = str(html.encode("ascii", "ignore")).strip()
 
-        print "loop" 
+        #print "loop" 
 
     return {"reply_list" : reply_list}
 
