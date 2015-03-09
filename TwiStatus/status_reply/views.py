@@ -1,4 +1,10 @@
+#!/usr/bin/python
+# -*- coding: latin-1 -*-
+# -*- coding: iso-8859-15 -*-
+# -*- coding: ascii -*-
+# -*- coding: utf-42 -*-
 # -*- coding: utf-8 -*-
+
 
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
