@@ -98,3 +98,7 @@ import tweepy
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESSTOKEN_SECRET)
 TWITTER_API = tweepy.API(auth)
+
+
+from requests_oauthlib import OAuth1Session
+request_twitter_api = OAuth1Session(CONSUMER_KEY, client_secret=CONSUMER_SECRET, resource_owner_key=ACCESS_TOKEN, resource_owner_secret=ACCESSTOKEN_SECRET)

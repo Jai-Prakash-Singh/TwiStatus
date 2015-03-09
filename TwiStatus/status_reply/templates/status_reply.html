@@ -7,8 +7,8 @@
 var ajax_call = function() {
     $.post("/ajax_get_reply/",
         function(data,status){
-            $("#reply_div").empty();
-            $("#reply_div").html(data)
+            // $("#reply_div").empty();
+            $("#table_reply_div").append(data)
             // alert("Data: " + data + "\nStatus: " + status);
         });
 };
@@ -40,7 +40,7 @@ setInterval(ajax_call, interval);
 
 {% if  status %}
 <div id="status_reply_div" style="width:100%;background-color:LawnGreen;">
-  <table style="width:100%" cellpadding="0" cellspacing="0" border="0" >
+  <table id = "table_status_reply_div" style="width:100%" cellpadding="0" cellspacing="0" border="0" >
   <tr>
      <td width="160">Fullname</td>
      <td width="160">User Name</td>
@@ -61,7 +61,7 @@ setInterval(ajax_call, interval);
 {% if reply_list %}
 <div id="reply_div" style="width:100%;background-color:GreenYellow;">
 
-     <table style="width:100%" cellpadding="0" cellspacing="0" border="0" >  
+     <table id = "table_reply_div" style="width:100%" cellpadding="0" cellspacing="0" border="0" >  
      {% for reply_dict in reply_list %}
      <tr>
          <td width="160">{{reply_dict.0}}</td>
