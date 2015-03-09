@@ -66,12 +66,17 @@ def get_status_reply(request):
     if request.method == 'POST':
         if form.is_valid():
             tweet_id = form.cleaned_data['twit_id']
-            #date = 571542404156809216
-            tweet_id = 572238536750993408
+            #tweet_id = 571542404156809216
+            #tweet_id = 572238536750993408
 	    status = api.get_status(id = tweet_id )
-	    screen_name = status._json["user"]["screen_name"]
-            request.session["tweet_id"] = tweet_id
-	    request.session["screen_name"] = screen_name
+            if status.in_reply_to_status_id:
+                screen_name = status.in_reply_to_screen_name
+                request.session["tweet_id"] = status.in_reply_to_status_id
+                request.session["screen_name"] = screen_name
+            else:
+	        screen_name = status._json["user"]["screen_name"]
+                request.session["tweet_id"] = tweet_id
+	        request.session["screen_name"] = screen_name
 
             name = status._json["user"]["name"]
             screen_name = status._json["user"]["screen_name"]
